@@ -17,6 +17,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+
 public class MainForm {
 	private JFrame frame;
 	private JTextField textField;
@@ -110,7 +111,7 @@ public class MainForm {
 					JOptionPane.showMessageDialog(null,
 							"Не делится на 4. Попробуйте снова");
 				} else {
-					Manager.startup(Integer.parseInt(str));
+					Manager.startup(Integer.parseInt(str));				
 				}
 				textField.setText("");
 				panel.repaint();
@@ -138,10 +139,25 @@ public class MainForm {
 						if (size % 4 == 0) {
 							String name = textField_2.getText();
 							if (name != null) {
-								Boolean add = Manager.addFile(name, size);
-								if (add) {
-									list2.addElement(name);
-									list.setModel(list2);
+							int i = 0;	
+								while (size > 0) {
+									int sizeLocal = 0;
+									if(size / 4 > 3) {
+										sizeLocal = 3*4;
+										size -=sizeLocal;
+									} else {
+										sizeLocal = size;
+										size = 0;
+									}
+									if(i!=0) {
+										name+=i;
+									}
+									Boolean add = Manager.addFile(name, sizeLocal);
+									if (add) {
+										list2.addElement(name);
+										list.setModel(list2);
+									}
+									i++;
 								}
 								panel.repaint();
 							}

@@ -13,11 +13,12 @@ public class Manager extends JPanel {
 	private static ArrayList<File> files;
 	private int x = 0;
 	private int y = 0;
+	private static int sixe_i = 4;
 	
 	public static void startup(int _size) {
 		size = _size;
-		countFree = size / 4;
-		countElement = size / 4;
+		countFree = size / sixe_i;
+		countElement = size / sixe_i;
 		if (files != null) {
 			files.removeAll(files);
 		}
@@ -90,6 +91,6 @@ public class Manager extends JPanel {
 		return memory;
 	}
 	public static void setFree() {
-		countFree = size / 4;
+		countFree = size / sixe_i;
 	}
 }

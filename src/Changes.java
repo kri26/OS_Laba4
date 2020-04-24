@@ -47,7 +47,7 @@ public class Changes extends JPanel{
 		}
 		IndexNode knot = new IndexNode(ps,name, size);
 		File file = new File(knot);
-		files.add(file);
+		files.add(file);		
 		return true;
 	}
 	
