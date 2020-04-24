@@ -139,25 +139,10 @@ public class MainForm {
 						if (size % 4 == 0) {
 							String name = textField_2.getText();
 							if (name != null) {
-							int i = 0;	
-								while (size > 0) {
-									int sizeLocal = 0;
-									if(size / 4 > 3) {
-										sizeLocal = 3*4;
-										size -=sizeLocal;
-									} else {
-										sizeLocal = size;
-										size = 0;
-									}
-									if(i!=0) {
-										name+=i;
-									}
-									Boolean add = Manager.addFile(name, sizeLocal);
-									if (add) {
-										list2.addElement(name);
-										list.setModel(list2);
-									}
-									i++;
+								Boolean add = Manager.addFile(name, size);
+								if (add) {
+									list2.addElement(name);
+									list.setModel(list2);
 								}
 								panel.repaint();
 							}

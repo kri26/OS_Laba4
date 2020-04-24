@@ -45,7 +45,27 @@ public class Changes extends JPanel{
 				}
 			}
 		}
-		IndexNode knot = new IndexNode(ps,name, size);
+		int sizeLocal = 0;
+		if(size / 4 > 3) {
+			sizeLocal = 3*4;
+			size -=sizeLocal;
+		} else {
+			sizeLocal = size;
+			size = 0;
+		}
+		IndexNode knot = new IndexNode(ps,name, sizeLocal);
+		knot.indexNode(ps);
+		while (size > 0) {
+			if(size / 4 > 3) {
+				sizeLocal = 3*4;
+				size -=sizeLocal;
+				knot.setNode(ps,name, sizeLocal);
+			} else {
+				sizeLocal = size;
+				size = 0;
+				knot.setNode(ps,name, sizeLocal);
+			}
+		}		
 		File file = new File(knot);
 		files.add(file);		
 		return true;
